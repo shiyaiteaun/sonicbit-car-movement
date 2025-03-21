@@ -5,16 +5,20 @@ basic.forever(function () {
     DigitalPin.P0,
     PingUnit.Centimeters
     )
-    if (distance <= 10) {
-        // Display "AWAKEN" on the screen
-        basic.showString("AWAKEN")
-        // Move Backward (1 inch)
+    if (distance <= 2) {
+        // Move Backward
         // Right wheel backward
         pins.servoWritePin(AnalogPin.P1, 180)
         // Left wheel backward
         pins.servoWritePin(AnalogPin.P2, 0)
-        // Move back for 300ms (~1 inch)
+        // Move back for 300ms
         basic.pause(300)
+        // Stop
+        // Right wheel stop
+        pins.servoWritePin(AnalogPin.P1, 90)
+        // Left wheel stop
+        pins.servoWritePin(AnalogPin.P2, 90)
+        basic.pause(100)
         // Turn Right
         // Right wheel stop
         pins.servoWritePin(AnalogPin.P1, 180)
@@ -28,9 +32,6 @@ basic.forever(function () {
         // Left wheel forward
         pins.servoWritePin(AnalogPin.P2, 180)
     } else {
-        // Display "AWAKEN" on the screen
-        basic.showString("AWAKEN")
-        // Move Forward Normally
         // Right wheel forward
         pins.servoWritePin(AnalogPin.P1, 0)
         // Left wheel forward
