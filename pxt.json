@@ -1,5 +1,6 @@
 {
     "name": "sonic:bit Car Movement",
+    "version": "0.0.1",
     "description": "",
     "dependencies": {
         "core": "*",
