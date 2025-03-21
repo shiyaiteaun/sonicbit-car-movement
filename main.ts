@@ -5,21 +5,28 @@ basic.forever(function () {
     DigitalPin.P0,
     PingUnit.Centimeters
     )
-    if (distance <= 2) {
-        // Move Backward
-        // Right wheel backward
-        pins.servoWritePin(AnalogPin.P1, 180)
-        // Left wheel backward
-        pins.servoWritePin(AnalogPin.P2, 0)
-        // Move back for 300ms
-        basic.pause(300)
-        // Stop
+    if (distance <= 5) {
+        // Stop motors first
         // Right wheel stop
         pins.servoWritePin(AnalogPin.P1, 90)
         // Left wheel stop
         pins.servoWritePin(AnalogPin.P2, 90)
-        basic.pause(100)
-        // Turn Right
+        // Display "AWAKEN" using LEDs (stays on screen)
+        basic.showLeds(`
+            . # . # .
+            # . # . #
+            . # # # .
+            . . # . .
+            . . # . .
+            `)
+        // Move Backward while "AWAKEN" is displayed
+        // Right wheel backward
+        pins.servoWritePin(AnalogPin.P1, 180)
+        // Left wheel backward
+        pins.servoWritePin(AnalogPin.P2, 0)
+        // Move back for 300ms (~1 inch)
+        basic.pause(300)
+        // Turn Right while still displaying "AWAKEN"
         // Right wheel stop
         pins.servoWritePin(AnalogPin.P1, 180)
         // Left wheel forward
@@ -31,7 +38,10 @@ basic.forever(function () {
         pins.servoWritePin(AnalogPin.P1, 0)
         // Left wheel forward
         pins.servoWritePin(AnalogPin.P2, 180)
+        // Clear the screen after avoidance
+        basic.clearScreen()
     } else {
+        // Move Forward Normally
         // Right wheel forward
         pins.servoWritePin(AnalogPin.P1, 0)
         // Left wheel forward
