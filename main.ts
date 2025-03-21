@@ -6,6 +6,8 @@ basic.forever(function () {
     PingUnit.Centimeters
     )
     if (distance <= 10) {
+        // Display "AWAKEN" on the screen
+        basic.showString("AWAKEN")
         // Move Backward (1 inch)
         // Right wheel backward
         pins.servoWritePin(AnalogPin.P1, 180)
@@ -26,6 +28,8 @@ basic.forever(function () {
         // Left wheel forward
         pins.servoWritePin(AnalogPin.P2, 180)
     } else {
+        // Display "AWAKEN" on the screen
+        basic.showString("AWAKEN")
         // Move Forward Normally
         // Right wheel forward
         pins.servoWritePin(AnalogPin.P1, 0)
